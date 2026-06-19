@@ -1,995 +1,1107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>JOPT Games — Service Overview 2026</title>
+<meta name="description" content="JOPT Games is a mobile-exclusive app for winning seats to JOPT, SPADIE, Sengoku Poker Tour, APT, and WSOP live events entirely online. Every tournament, in your pocket." />
+<meta property="og:title" content="JOPT Games — Service Overview 2026" />
+<meta property="og:description" content="Japan-born mobile app directly connected to live poker events. Qualifier pipelines for JOPT, SPADIE, Sengoku, APT, and WSOP." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --blue:       #005ba0;
-    --blue-dark:  #004b87;
-    --orange:     #D16B30;
-    --gray:       #717071;
-    --cool-gray:  #63666A;
-    --light-gray: #DCDDDD;
-    --white:      #FFFFFF;
-    --black:      #000000;
+  :root{
+    --gold:#c9a961;
+    --gold-soft:#d6b878;
+    --red:#d4202d;
+    --red-dark:#5d0710;
+    --blue:#0b4f93;
+    --dark:#0c0d18;
+    --dark-2:#15172a;
+    --ink:#1a1a1a;
+    --ink-2:#3a3a3a;
+    --muted:#6b6b6b;
+    --muted-2:#9a958a;
+    --bg:#ffffff;
+    --card:#ffffff;
+    --line:#e8e4d8;
+    --line-soft:#efece2;
+    --online:#2f6f9f;
+    --online-soft:#eef7fb;
+    --offline:#9f4f3d;
+    --offline-soft:#fbf0ec;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,'Helvetica Neue',sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.8;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 48px}
+  @media (max-width:720px){.wrap{padding:0 24px}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:#fff;
+    color:var(--ink);
+    min-height:min(100vh,860px);
+    display:flex;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .hero::before{
+    content:"";
+    position:absolute;inset:0;
+    background:
+      linear-gradient(90deg, rgba(201,169,97,.08) 0 1px, transparent 1px),
+      linear-gradient(180deg, rgba(201,169,97,.06) 0 1px, transparent 1px),
+      radial-gradient(circle at 82% 26%, rgba(201,169,97,.11), transparent 30%);
+    background-size:80px 80px,80px 80px,auto;
+    opacity:.5;
+    pointer-events:none;
+  }
+  .hero__top{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:48px 56px 0;
+    position:relative;z-index:1;
+  }
+  .hero__eyebrow{
+    color:var(--gold);
+    font-size:13px;
+    letter-spacing:.32em;
+    font-weight:500;
+  }
+  .hero__suits{
+    color:var(--gold);
+    font-size:18px;
+    letter-spacing:.5em;
+  }
+  .hero__body{
+    flex:1;
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(280px,380px);
+    align-items:center;
+    gap:56px;
+    padding:80px 56px;
+    position:relative;z-index:1;
+  }
+  .hero__content{min-width:0}
+  .hero__title{
+    font-size:clamp(64px,11vw,148px);
+    line-height:1.02;
+    letter-spacing:-.01em;
+    font-weight:700;
+    margin-bottom:32px;
+  }
+  .hero__lead{
+    font-size:clamp(18px,2.4vw,28px);
+    color:var(--ink-2);
+    font-weight:300;
+    margin-bottom:36px;
+  }
+  .hero__copy{
+    display:flex;align-items:center;gap:18px;
+    color:var(--gold-soft);
+    font-size:clamp(15px,1.8vw,20px);
+    font-weight:400;
+    letter-spacing:.05em;
+  }
+  .hero__copy::before{
+    content:"";
+    display:block;
+    width:3px;height:1.5em;
+    background:var(--gold);
+  }
+  .hero__routes{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:28px;
+  }
+  .hero__routes span{
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    border-radius:999px;
+    padding:7px 13px;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.08em;
+  }
+  .hero__routes span.hot{
+    border-color:rgba(201,169,97,.7);
+    color:#8a651f;
+    background:#fffaf0;
+  }
+  .hero__visual{
+    justify-self:end;
+    width:min(100%,360px);
+  }
+  .globalHeroArt{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:10px;
+    box-shadow:0 24px 70px rgba(12,13,24,.12);
+  }
+  .globalHeroArt img{
+    display:block;
+    width:100%;
+    height:auto;
+    object-fit:contain;
+    border-radius:10px;
+  }
+  .globalHeroArt__caption{
+    margin-top:12px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+  }
+  .hero__meta{
+    border-top:1px solid var(--line-soft);
+    padding:28px 56px 48px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    position:relative;z-index:1;
+  }
+  .hero__metaItem .label{
+    color:var(--muted-2);
+    font-size:11px;
+    letter-spacing:.28em;
+    font-weight:500;
+    margin-bottom:8px;
+  }
+  .hero__metaItem .value{
+    color:var(--ink);
+    font-size:17px;
+    font-weight:500;
+  }
+  @media (max-width:720px){
+    .hero__top,.hero__body,.hero__meta{padding-left:24px;padding-right:24px}
+    .hero{min-height:auto}
+    .hero__body{grid-template-columns:1fr;gap:32px;padding-top:44px;padding-bottom:44px}
+    .hero__visual{justify-self:center;width:min(62vw,260px)}
+    .globalHeroArt__caption{display:none}
+    .hero__meta{grid-template-columns:1fr;gap:18px;padding-top:20px;padding-bottom:32px}
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--white);
-    color: var(--black);
-    font-family: 'Helvetica Neue', 'Arial', sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
+  /* ---------- TOC ---------- */
+  .toc{
+    background:var(--card);
+    padding:96px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .toc__head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1.5px solid var(--ink);
+    padding-bottom:18px;margin-bottom:36px;
+  }
+  .toc__head .ja{
+    display:flex;align-items:center;gap:24px;
+    font-size:22px;font-weight:700;
+  }
+  .toc__head .ja::before{
+    content:"CONTENTS";
+    color:var(--gold);
+    font-size:12px;font-weight:500;letter-spacing:.28em;
+  }
+  .toc__head .en{
+    color:var(--muted);
+    font-size:11px;letter-spacing:.28em;font-weight:500;
+  }
+  .toc__list{list-style:none}
+  .toc__item{
+    display:grid;
+    grid-template-columns:48px 1fr auto;
+    gap:24px;align-items:baseline;
+    padding:18px 0;
+    border-bottom:1px dotted var(--line);
+    text-decoration:none;color:inherit;
+    transition:color .2s ease, padding .2s ease;
+  }
+  .toc__item:hover{color:var(--gold)}
+  .toc__num{color:var(--gold);font-weight:700;font-size:14px;letter-spacing:.1em}
+  .toc__ja{font-size:16px;font-weight:500}
+  .toc__en{color:var(--muted);font-size:11px;letter-spacing:.24em;font-weight:500}
+  @media (max-width:720px){
+    .toc__en{display:none}
+    .toc__item{grid-template-columns:36px 1fr;gap:16px}
   }
 
-  /* ── HERO ── */
-  .hero {
-    background: var(--blue);
-    color: var(--white);
-    padding: 80px 64px 80px 64px;
+  /* ---------- SECTIONS ---------- */
+  section.sect{padding:104px 0;border-bottom:1px solid var(--line-soft)}
+  section.sect:nth-of-type(odd){background:var(--card)}
+  .sect__head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    border-bottom:1.5px solid var(--ink);
+    padding-bottom:18px;margin-bottom:48px;gap:24px;
   }
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    color: rgba(255,255,255,0.6);
-    text-transform: uppercase;
-    margin-bottom: 56px;
+  .sect__title{
+    display:flex;align-items:baseline;gap:24px;
+    font-size:22px;font-weight:700;
   }
-  .hero-logo {
-    font-size: clamp(64px, 10vw, 104px);
-    font-weight: 900;
-    letter-spacing: 0.05em;
-    color: var(--white);
-    line-height: 1;
-    margin-bottom: 4px;
+  .sect__num{color:var(--gold);font-weight:700;font-size:13px;letter-spacing:.18em}
+  .sect__en{color:var(--muted);font-size:11px;letter-spacing:.28em;font-weight:500;text-align:right}
+  .lead{
+    font-size:16px;color:var(--ink-2);
+    margin-bottom:48px;max-width:780px;
   }
-  .hero-sub {
-    font-size: clamp(24px, 4vw, 40px);
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: 0.1em;
-    margin-bottom: 40px;
-  }
-  .hero-tagline {
-    font-size: clamp(14px, 1.8vw, 18px);
-    color: rgba(255,255,255,0.85);
-    max-width: 600px;
-    line-height: 1.8;
-    margin-bottom: 48px;
-  }
-  .hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 48px;
-  }
-  .hero-badges span {
-    border: 1px solid rgba(255,255,255,0.4);
-    padding: 5px 14px;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.8);
-    text-transform: uppercase;
-  }
-  .hero-suits {
-    font-size: 22px;
-    letter-spacing: 0.25em;
-    color: rgba(255,255,255,0.3);
-    margin-bottom: 32px;
-  }
-  .hero-brands {
-    font-size: 12px;
-    letter-spacing: 0.12em;
-    color: rgba(255,255,255,0.5);
-    text-transform: uppercase;
-  }
-  .hero-brands strong { color: rgba(255,255,255,0.9); }
+  .lead.large{font-size:17px}
 
-  /* ── PAGE WRAPPER ── */
-  .page-wrap {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 0 40px;
+  /* product screenshots */
+  .visualBlock{
+    margin:48px 0;
   }
-
-  /* ── TOC ── */
-  .toc-section {
-    padding: 72px 0;
-    border-bottom: 1px solid var(--light-gray);
+  .visualBlock.tight{margin-top:28px}
+  .visualHead{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:24px;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+    margin-bottom:24px;
   }
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 0.4em;
-    color: var(--cool-gray);
-    text-transform: uppercase;
-    margin-bottom: 28px;
+  .visualHead .title{
+    font-size:15px;
+    font-weight:700;
   }
-  .toc-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--light-gray);
-    border: 1px solid var(--light-gray);
+  .visualHead .note{
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:.18em;
   }
-  .toc-item {
-    background: var(--white);
-    padding: 20px 24px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    text-decoration: none;
-    transition: background 0.15s;
+  .shotGrid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
   }
-  .toc-item:hover { background: #f5f8fc; }
-  .toc-num {
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--light-gray);
-    line-height: 1;
-    min-width: 44px;
+  .shotGrid.c2{grid-template-columns:repeat(2,1fr)}
+  .shotCard{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:12px;
   }
-  .toc-title { font-size: 14px; font-weight: 700; color: var(--black); }
-  .toc-en {
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    color: var(--cool-gray);
-    text-transform: uppercase;
-    margin-top: 3px;
+  .shotCard img{
+    display:block;
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    object-position:top;
+    border-radius:6px;
+    background:#f7f7f4;
   }
-
-  /* ── SECTION ── */
-  .section {
-    padding: 72px 0;
-    border-bottom: 1px solid var(--light-gray);
+  .shotCard .cap{
+    padding:12px 4px 2px;
+    color:var(--ink-2);
+    font-size:13px;
+    line-height:1.7;
   }
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 20px;
-    margin-bottom: 40px;
+  .shotCard .cap b{
+    display:block;
+    color:var(--ink);
+    font-size:14px;
+    margin-bottom:2px;
   }
-  .section-num {
-    font-size: 56px;
-    font-weight: 900;
-    color: var(--light-gray);
-    line-height: 1;
+  .shotCard--wide img{
+    aspect-ratio:4/3;
   }
-  .section-title {
-    font-size: clamp(20px, 2.8vw, 26px);
-    font-weight: 900;
-    color: var(--blue);
-    letter-spacing: 0.02em;
+  .routeOverview{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(240px,340px);
+    gap:28px;
+    align-items:center;
+    border:1px solid var(--line);
+    background:#fff;
+    padding:28px;
+    box-shadow:0 18px 50px rgba(12,13,24,.06);
   }
-  .section-en {
-    font-size: 10px;
-    letter-spacing: 0.3em;
-    color: var(--cool-gray);
-    text-transform: uppercase;
-    margin-top: 4px;
+  .routeOverview__lead{
+    font-size:18px;
+    font-weight:800;
+    line-height:1.6;
+    margin-bottom:20px;
   }
-
-  /* ── BODY TEXT ── */
-  p { margin-bottom: 16px; color: var(--gray); font-size: 15px; line-height: 1.8; }
-  p:last-child { margin-bottom: 0; }
-  strong.accent { color: var(--orange); font-weight: 700; }
-  strong.blue { color: var(--blue); font-weight: 700; }
-
-  /* ── META GRID ── */
-  .meta-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1px;
-    margin: 32px 0;
-    background: var(--light-gray);
-    border: 1px solid var(--light-gray);
+  .routeSteps{
+    display:grid;
+    gap:1px;
+    background:var(--line-soft);
+    border:1px solid var(--line-soft);
   }
-  .meta-item {
-    background: var(--white);
-    padding: 18px 20px;
+  .routeStep{
+    display:grid;
+    grid-template-columns:42px 1fr;
+    gap:14px;
+    align-items:start;
+    background:#fff;
+    padding:16px;
   }
-  .meta-label {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--orange);
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    font-weight: 700;
+  .routeStep .num{
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    background:#fffaf0;
+    border:1px solid rgba(201,169,97,.55);
+    color:#8a651f;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    font-weight:800;
   }
-  .meta-value {
-    font-size: 14px;
-    color: var(--black);
-    font-weight: 700;
+  .routeStep b{
+    display:block;
+    font-size:15px;
+    margin-bottom:2px;
+  }
+  .routeStep span{
+    display:block;
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+  }
+  .routeOverview__screen{
+    background:#fff;
+    border:1px solid var(--line);
+    padding:10px;
+    box-shadow:0 18px 44px rgba(12,13,24,.09);
+  }
+  .routeOverview__screen img{
+    display:block;
+    width:100%;
+    aspect-ratio:3/4;
+    object-fit:cover;
+    object-position:top;
+  }
+  @media (max-width:840px){
+    .routeOverview{grid-template-columns:1fr;padding:20px}
+    .routeOverview__screen{max-width:300px;margin:0 auto}
+    .shotGrid,.shotGrid.c2{
+      grid-template-columns:none;
+      grid-auto-flow:column;
+      grid-auto-columns:minmax(250px,78vw);
+      overflow-x:auto;
+      padding-bottom:12px;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+    }
+    .shotCard{scroll-snap-align:start}
+    .visualHead{display:block}
+    .visualHead .note{margin-top:4px}
   }
 
-  /* ── DIFF LIST ── */
-  .diff-list { margin-top: 28px; display: grid; gap: 1px; background: var(--light-gray); }
-  .diff-item {
-    background: var(--white);
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 20px 24px;
+  /* international tournament panels */
+  .globalArena{
+    margin:56px 0 0;
+    background:
+      linear-gradient(135deg,rgba(7,8,15,.96),rgba(12,13,24,.92)),
+      radial-gradient(circle at 18% 18%,rgba(212,32,45,.26),transparent 32%);
+    color:#fff;
+    border:1px solid rgba(201,169,97,.36);
+    padding:28px;
+    box-shadow:0 28px 80px rgba(12,13,24,.14);
   }
-  .diff-num {
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--blue);
-    min-width: 32px;
-    line-height: 1.2;
+  .internationalShowcase{
+    margin-top:42px;
   }
-  .diff-text { font-size: 14px; color: var(--gray); line-height: 1.7; }
-  .diff-text strong { color: var(--black); font-weight: 700; }
-
-  /* ── FLOW STEPS ── */
-  .flow-steps {
-    margin-top: 28px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1px;
-    background: var(--light-gray);
-  }
-  .flow-step {
-    background: var(--blue);
-    padding: 28px 24px;
-    color: var(--white);
-  }
-  .flow-step-num {
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  .flow-step-title {
-    font-size: 15px;
-    font-weight: 900;
-    color: var(--white);
-    margin-bottom: 8px;
-  }
-  .flow-step-body { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
-
-  /* ── CARDS ── */
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-    margin-top: 28px;
-  }
-  .card {
-    border: 1px solid var(--light-gray);
-    padding: 24px 22px;
-    background: var(--white);
-  }
-  .card.blue {
-    background: var(--blue);
-    border-color: var(--blue-dark);
-  }
-  .card-label {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--orange);
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
-  .card.blue .card-label { color: rgba(255,255,255,0.6); }
-  .card-title { font-size: 14px; font-weight: 900; color: var(--black); margin-bottom: 8px; }
-  .card.blue .card-title { color: var(--white); }
-  .card-body { font-size: 13px; color: var(--gray); line-height: 1.7; }
-  .card.blue .card-body { color: rgba(255,255,255,0.75); }
-
-  /* ── TWO COL ── */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
-
-  /* ── SUMMARY BOX ── */
-  .summary-box {
-    border: 1px solid var(--light-gray);
-    border-top: 3px solid var(--blue);
-    padding: 28px 24px;
-    background: var(--white);
-  }
-  .summary-box .box-label {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--orange);
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 700;
-  }
-  .summary-box .box-title { font-size: 15px; font-weight: 900; color: var(--black); margin-bottom: 10px; }
-  .summary-box .box-body { font-size: 13px; color: var(--gray); line-height: 1.7; }
-
-  /* ── NOTE BOX ── */
-  .note-box {
-    border: 1px solid var(--light-gray);
-    border-left: 3px solid var(--orange);
-    padding: 18px 22px;
-    margin-top: 20px;
-    font-size: 13px;
-    color: var(--gray);
-    line-height: 1.7;
-    background: #fdf9f7;
-  }
-  .note-box strong { color: var(--orange); font-weight: 700; }
-
-  /* ── STAGE TABLE ── */
-  .stages {
-    margin-top: 28px;
-    display: grid;
-    gap: 1px;
-    background: var(--light-gray);
-    border: 1px solid var(--light-gray);
-  }
-  .stage {
-    background: var(--white);
-    display: grid;
-    grid-template-columns: 36px 110px 60px 1fr;
-    align-items: center;
-    gap: 20px;
-    padding: 18px 24px;
-  }
-  .stage:nth-child(odd) { background: #f8f9fa; }
-  .stage-num { font-size: 24px; font-weight: 900; color: var(--light-gray); }
-  .stage-name { font-size: 15px; font-weight: 900; color: var(--blue); }
-  .stage-tag {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    padding: 2px 7px;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-top: 4px;
-  }
-  .stage-tag.online { background: var(--blue); color: var(--white); }
-  .stage-tag.offline { background: var(--orange); color: var(--white); }
-  .stage-arrow { font-size: 16px; color: var(--light-gray); text-align: center; font-weight: 700; }
-  .stage-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-
-  /* ── PLAN TABLE ── */
-  .plan-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 28px;
-    border: 1px solid var(--light-gray);
-  }
-  .plan-table th {
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--white);
-    background: var(--blue);
-    padding: 12px 16px;
-    text-align: left;
-    font-weight: 700;
-  }
-  .plan-table td {
-    padding: 16px;
-    border-bottom: 1px solid var(--light-gray);
-    font-size: 14px;
-    color: var(--gray);
-    vertical-align: top;
-  }
-  .plan-table tr:last-child td { border-bottom: none; }
-  .plan-table tr:nth-child(even) td { background: #f8f9fa; }
-  .plan-name { font-weight: 900; color: var(--black); }
-  .plan-price { color: var(--blue); font-weight: 900; }
-  .plan-gold-row td { background: #f0f4f9 !important; }
-
-  /* ── PHASE ── */
-  .phase-grid {
-    margin-top: 28px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 1px;
-    background: var(--light-gray);
-  }
-  .phase {
-    background: var(--white);
-    padding: 26px 22px;
-  }
-  .phase-label {
-    font-size: 9px;
-    letter-spacing: 0.3em;
-    color: var(--orange);
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    font-weight: 700;
-  }
-  .phase-year { font-size: 32px; font-weight: 900; color: var(--blue); margin-bottom: 2px; }
-  .phase-name { font-size: 13px; color: var(--cool-gray); margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
-  .phase-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
-
-  /* ── CONTACT ── */
-  .contact-grid {
-    margin-top: 28px;
-    border: 1px solid var(--light-gray);
-  }
-  .contact-row {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    border-bottom: 1px solid var(--light-gray);
-  }
-  .contact-row:last-child { border-bottom: none; }
-  .contact-key {
-    padding: 14px 18px;
-    border-right: 1px solid var(--light-gray);
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    color: var(--cool-gray);
-    text-transform: uppercase;
-    font-weight: 700;
-    background: #f8f9fa;
-  }
-  .contact-val { padding: 14px 18px; font-size: 14px; color: var(--black); }
-
-  /* ── INLINE BADGE ── */
-  .badge {
-    display: inline-block;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    background: var(--orange);
-    color: var(--white);
-    padding: 2px 8px;
-    text-transform: uppercase;
-    font-weight: 700;
-    vertical-align: middle;
-    margin-left: 8px;
+  .internationalShowcase .shotCard{
+    border-color:#dccb93;
+    box-shadow:0 18px 48px rgba(12,13,24,.08);
   }
 
-  /* ── FOOTER ── */
-  .footer {
-    background: var(--blue-dark);
-    color: rgba(255,255,255,0.6);
-    padding: 56px 64px;
+  /* meta row (executive summary) */
+  .metaRow{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin-bottom:48px;
   }
-  .footer-logo {
-    font-size: 18px;
-    font-weight: 900;
-    color: var(--white);
-    letter-spacing: 0.1em;
-    margin-bottom: 20px;
+  .metaRow > div{background:var(--card);padding:28px 24px}
+  section.sect:nth-of-type(odd) .metaRow > div{background:#fff}
+  .metaRow .k{
+    color:var(--gold);font-size:11px;letter-spacing:.24em;font-weight:500;margin-bottom:10px;
   }
-  .footer-text {
-    font-size: 12px;
-    color: rgba(255,255,255,0.5);
-    max-width: 680px;
-    line-height: 1.8;
-    margin-bottom: 24px;
+  .metaRow .v{font-size:18px;font-weight:600;margin-bottom:6px}
+  .metaRow .d{font-size:12.5px;color:var(--muted);line-height:1.7}
+
+  /* differentiators (numbered list) */
+  .diff{
+    margin-top:8px;
+    background:#fff;
+    border-left:3px solid var(--gold);
+    padding:28px 32px;
   }
-  .footer-copy {
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: rgba(255,255,255,0.3);
-    text-transform: uppercase;
+  .diff__title{
+    font-size:14px;font-weight:700;margin-bottom:14px;color:var(--ink);
+    letter-spacing:.04em;
+  }
+  .diff__list{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .diff__list li{
+    font-size:14.5px;color:var(--ink-2);
+    padding-left:0;line-height:1.8;
+  }
+  .diff__list li b{color:var(--ink);font-weight:600}
+
+  /* two columns / three columns cards */
+  .cols{display:grid;gap:24px}
+  .cols.c2{grid-template-columns:1fr 1fr}
+  .cols.c3{grid-template-columns:repeat(3,1fr)}
+  .cols.c4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:840px){
+    .cols.c2,.cols.c3,.cols.c4{grid-template-columns:1fr}
+  }
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:32px 28px;
+    position:relative;
+  }
+  section.sect:nth-of-type(odd) .card{background:#fff;border-color:var(--line-soft)}
+  .card__tag{
+    display:inline-block;
+    font-size:10.5px;letter-spacing:.24em;font-weight:500;
+    color:var(--gold);margin-bottom:14px;
+  }
+  .card__num{
+    display:inline-block;
+    font-size:11px;font-weight:700;color:#fff;background:var(--gold);
+    padding:3px 10px;border-radius:2px;margin-bottom:14px;letter-spacing:.1em;
+  }
+  .card__title{font-size:18px;font-weight:700;margin-bottom:6px}
+  .card__sub{
+    color:var(--gold-soft);font-size:11.5px;letter-spacing:.18em;
+    font-weight:500;margin-bottom:16px;text-transform:uppercase;
+  }
+  .card__text{font-size:14px;color:var(--ink-2);line-height:1.85}
+
+  /* stage flow numbers */
+  .stage-card{
+    border-top:4px solid var(--online);
+  }
+  .stage-card--offline{
+    border-top-color:var(--offline);
+  }
+  .stage-card--online{
+    background:linear-gradient(180deg,var(--online-soft) 0%,var(--card) 72%);
+  }
+  .stage-card--offline{
+    background:linear-gradient(180deg,var(--offline-soft) 0%,var(--card) 72%);
+  }
+  section.sect:nth-of-type(odd) .stage-card--online{
+    background:linear-gradient(180deg,var(--online-soft) 0%,#fff 72%);
+  }
+  section.sect:nth-of-type(odd) .stage-card--offline{
+    background:linear-gradient(180deg,var(--offline-soft) 0%,#fff 72%);
+  }
+  .stage__head{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:14px;
+  }
+  .stage__no{
+    width:28px;height:28px;border-radius:50%;
+    background:var(--gold);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:700;
+  }
+  .stage-card--online .stage__no{background:var(--online)}
+  .stage-card--offline .stage__no{background:var(--offline)}
+  .stage__arrow{color:var(--muted-2);font-size:18px}
+  .stage__mode{
+    display:inline-flex;
+    align-items:center;
+    width:max-content;
+    color:#fff;
+    font-size:10.5px;
+    letter-spacing:.18em;
+    font-weight:700;
+    line-height:1;
+    padding:5px 9px;
+    border-radius:2px;
+    margin-bottom:12px;
+  }
+  .stage-card--online .stage__mode{background:var(--online)}
+  .stage-card--offline .stage__mode{background:var(--offline)}
+
+  /* notice box */
+  .notice{
+    margin-top:36px;
+    background:#fff;
+    border-left:3px solid var(--gold);
+    padding:24px 28px;
+  }
+  .notice__title{
+    font-size:13px;font-weight:700;letter-spacing:.04em;margin-bottom:10px;
+  }
+  .notice__text{font-size:13.5px;color:var(--ink-2);line-height:1.85}
+
+  /* subscription table */
+  .subTable{
+    width:100%;border-collapse:collapse;
+    border-top:1.5px solid var(--ink);
+    border-bottom:1px solid var(--line);
+    margin-bottom:36px;
+  }
+  .subTable th,.subTable td{
+    text-align:left;padding:18px 16px;
+    border-bottom:1px solid var(--line);
+    font-size:14px;
+  }
+  .subTable th{
+    font-size:11px;letter-spacing:.2em;color:var(--muted);font-weight:500;
+    border-bottom:1px solid var(--ink);
+  }
+  .subTable td.plan{font-weight:700;font-size:15px}
+  .subTable td.plan.gold{color:var(--gold)}
+  .subTable td.price{font-weight:600;font-family:'Playfair Display',serif}
+  .subTable .pos{color:var(--muted);font-size:12.5px}
+
+  /* roadmap */
+  .road{
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    gap:1px;background:var(--line);border:1px solid var(--line);
+    margin-top:36px;
+  }
+  .road > div{
+    background:var(--card);padding:24px;
+  }
+  section.sect:nth-of-type(odd) .road > div{background:#fff}
+  .road .y{color:var(--gold);font-weight:700;font-size:14px;margin-bottom:6px;letter-spacing:.08em}
+  .road .lbl{font-size:12px;color:var(--muted);margin-bottom:8px;letter-spacing:.18em}
+  .road .t{font-size:13.5px;color:var(--ink-2);line-height:1.8}
+  @media (max-width:720px){.road{grid-template-columns:1fr}}
+
+  /* contact table */
+  .contact{
+    border-top:1.5px solid var(--ink);
+    border-bottom:1px solid var(--line);
+  }
+  .contact .row{
+    display:grid;grid-template-columns:200px 1fr;
+    border-bottom:1px solid var(--line);
+    padding:16px 8px;font-size:14px;
+  }
+  .contact .k{font-weight:700}
+  .contact .v{color:var(--ink-2)}
+  @media (max-width:720px){
+    .contact .row{grid-template-columns:1fr;gap:4px}
+    .contact .k{color:var(--gold);font-size:11px;letter-spacing:.18em}
   }
 
-  @media (max-width: 640px) {
-    .hero { padding: 56px 28px; }
-    .page-wrap { padding: 0 20px; }
-    .footer { padding: 48px 28px; }
-    .two-col { grid-template-columns: 1fr; }
-    .stage { grid-template-columns: 36px 1fr; }
-    .stage-arrow { display: none; }
-    .stage-desc { display: none; }
-    .contact-row { grid-template-columns: 1fr; }
-    .contact-key { border-right: none; border-bottom: 1px solid var(--light-gray); }
+  /* disclaimer */
+  .disclaim{
+    margin-top:48px;
+    color:var(--muted);font-size:11.5px;line-height:1.85;
   }
+
+  /* footer */
+  footer{
+    background:var(--dark);color:#9a958a;
+    padding:32px 0;text-align:center;
+    font-size:11px;letter-spacing:.18em;
+  }
+  footer .gold{color:var(--gold);margin-right:14px}
 </style>
 </head>
 <body>
 
-<!-- ═══ HERO ═══ -->
+<!-- ============== HERO ============== -->
 <section class="hero">
-  <div class="hero-eyebrow">SERVICE OVERVIEW · 2026</div>
-  <div class="hero-suits">♠ ♥ ♦ ♣</div>
-  <div class="hero-logo">JOPT</div>
-  <div class="hero-sub">Games</div>
-  <p class="hero-tagline">
-    Japan-born mobile app directly connected to live poker events.<br>
-    Every tournament, in your pocket.
-  </p>
-  <div class="hero-badges">
-    <span>Mobile Application</span>
-    <span>iOS / Android</span>
-    <span>Japan / Korea / Asia</span>
+  <div class="hero__top">
+    <div class="hero__eyebrow">SERVICE OVERVIEW · 2026</div>
+    <div class="hero__suits">♠ ♥ ♦ ♣</div>
   </div>
-  <div class="hero-brands">
-    International routes connecting to <strong>JOPT · SPADIE · SENGOKU · APT · WSOP · WSOP Circuit</strong>
-  </div>
-</section>
 
-<!-- ═══ TOC ═══ -->
-<div class="page-wrap">
-
-<section class="toc-section" id="toc">
-  <div class="section-label">Table of Contents</div>
-  <div class="toc-grid">
-    <a class="toc-item" href="#s01">
-      <div class="toc-num">01</div>
-      <div>
-        <div class="toc-title">About JOPT Games</div>
-        <div class="toc-en">Executive Summary</div>
+  <div class="hero__body">
+    <div class="hero__content">
+      <h1 class="hero__title">JOPT<br/>Games</h1>
+      <p class="hero__lead">Japan-born mobile app directly connected to live poker events.</p>
+      <p class="hero__copy">Every tournament, in your pocket.</p>
+      <div class="hero__routes">
+        <span>JOPT</span>
+        <span>SPADIE</span>
+        <span>Sengoku</span>
+        <span class="hot">APT</span>
+        <span class="hot">WSOP</span>
       </div>
-    </a>
-    <a class="toc-item" href="#s02">
-      <div class="toc-num">02</div>
-      <div>
-        <div class="toc-title">Product Foundation</div>
-        <div class="toc-en">Platform Foundation</div>
+    </div>
+    <div class="hero__visual">
+      <div class="globalHeroArt">
+        <img src="assets/jopt-games-wsop-circuit-white.png" alt="JOPT Games and WSOP Circuit $1,700 visual" />
+        <div class="globalHeroArt__caption">Your direct route to WSOP Circuit and international tournament seats through JOPT Games.</div>
       </div>
-    </a>
-    <a class="toc-item" href="#s03">
-      <div class="toc-num">03</div>
-      <div>
-        <div class="toc-title">Two Core Functions</div>
-        <div class="toc-en">Function Architecture</div>
-      </div>
-    </a>
-    <a class="toc-item" href="#s04">
-      <div class="toc-num">04</div>
-      <div>
-        <div class="toc-title">Stage Structure</div>
-        <div class="toc-en">Stage Architecture</div>
-      </div>
-    </a>
-    <a class="toc-item" href="#s05">
-      <div class="toc-num">05</div>
-      <div>
-        <div class="toc-title">Subscription Plans</div>
-        <div class="toc-en">Subscription</div>
-      </div>
-    </a>
-    <a class="toc-item" href="#s06">
-      <div class="toc-num">06</div>
-      <div>
-        <div class="toc-title">Direct Buy-In</div>
-        <div class="toc-en">Direct Buy-In</div>
-      </div>
-    </a>
-    <a class="toc-item" href="#s07">
-      <div class="toc-num">07</div>
-      <div>
-        <div class="toc-title">WSOP &amp; Global Partnerships</div>
-        <div class="toc-en">Global Partnership</div>
-      </div>
-    </a>
-    <a class="toc-item" href="#s08">
-      <div class="toc-num">08</div>
-      <div>
-        <div class="toc-title">Future Vision — Online Poker League</div>
-        <div class="toc-en">Future Initiative</div>
-      </div>
-    </a>
-    <a class="toc-item" href="#s09">
-      <div class="toc-num">09</div>
-      <div>
-        <div class="toc-title">Contact</div>
-        <div class="toc-en">Contact</div>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- ═══ 01 ═══ -->
-<section class="section" id="s01">
-  <div class="section-header">
-    <div class="section-num">01</div>
-    <div>
-      <div class="section-title">About JOPT Games</div>
-      <div class="section-en">Executive Summary</div>
     </div>
   </div>
 
-  <p>JOPT Games is a mobile-exclusive app designed for players to win seats to JOPT — Japan's premier live poker events — entirely online. Rather than a standalone in-app gaming experience, the product is purpose-built as a seamless pipeline: <strong class="blue">Online Qualifier → Live Tournament Entry</strong>.</p>
-
-  <p>Built on a globally proven technology stack and tournament operation engine, the platform operates on a strict non-real-money basis — chips cannot be exchanged for cash. Designed for Japan, Korea, and Asia, players across the region compete on the same pipeline for seats to JOPT, SPADIE, Sengoku Poker Tour, APT (Asian Poker Tour), and more. Through the WSOP (World Series of Poker) partnership, Japanese players gain a direct route to the World Series in Las Vegas.</p>
-
-  <div class="meta-grid">
-    <div class="meta-item">
-      <div class="meta-label">Product Type</div>
-      <div class="meta-value">Player Acquisition App — Online → Live Pipeline</div>
+  <div class="hero__meta">
+    <div class="hero__metaItem">
+      <div class="label">FORMAT</div>
+      <div class="value">Mobile Application</div>
     </div>
-    <div class="meta-item">
-      <div class="meta-label">Platform</div>
-      <div class="meta-value">Mobile Only — App Store / Google Play</div>
+    <div class="hero__metaItem">
+      <div class="label">PLATFORM</div>
+      <div class="value">iOS / Android</div>
     </div>
-    <div class="meta-item">
-      <div class="meta-label">Event Routes</div>
-      <div class="meta-value">JOPT / SPADIE / Sengoku / APT</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Operation</div>
-      <div class="meta-value">Non-Real-Money · Asia-wide</div>
-    </div>
-  </div>
-
-  <div class="section-label" style="margin-top: 40px;">4 Key Differentiators</div>
-  <div class="diff-list">
-    <div class="diff-item">
-      <div class="diff-num">①</div>
-      <div class="diff-text"><strong>Safe &amp; Compliant Asia-wide Environment</strong> — Built on a globally proven tech stack, operated as non-real-money (no wagering) with access for players across Japan, Korea, and Asia.</div>
-    </div>
-    <div class="diff-item">
-      <div class="diff-num">②</div>
-      <div class="diff-text"><strong>Direct Connection to Major Live Tournaments</strong> — Qualifiers and Day 1 events for JOPT, SPADIE, Sengoku Poker Tour, and more are hosted directly within the app.</div>
-    </div>
-    <div class="diff-item">
-      <div class="diff-num">③</div>
-      <div class="diff-text"><strong>International Tournament Linkage</strong> — Scalable to handle seat pathways for WSOP, APT, KSOP, and other Asian and international tournaments.</div>
-    </div>
-    <div class="diff-item">
-      <div class="diff-num">④</div>
-      <div class="diff-text"><strong>WSOP Live App Integration</strong> — Shared account system allows seamless receipt and use of WSOP satellite winnings directly through the WSOP Live app — no second account needed.</div>
-    </div>
-  </div>
-
-  <div class="section-label" style="margin-top: 40px;">In-App Player Flow</div>
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="flow-step-num">Step 01</div>
-      <div class="flow-step-title">Find an Event</div>
-      <div class="flow-step-body">Browse available events across JOPT, SPADIE, Sengoku, APT, and more from a unified listing.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-step-num">Step 02</div>
-      <div class="flow-step-title">Enter Online Qualifiers</div>
-      <div class="flow-step-body">Register for Trial, Satellite, or Day 1 stages using the appropriate ticket for each level.</div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-step-num">Step 03</div>
-      <div class="flow-step-title">Manage Your Seats</div>
-      <div class="flow-step-body">Track membership status and Trial / Satellite / Day 1 ticket balances from your account dashboard.</div>
+    <div class="hero__metaItem">
+      <div class="label">REGION</div>
+      <div class="value">Japan / Korea / Asia</div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 02 ═══ -->
-<section class="section" id="s02">
-  <div class="section-header">
-    <div class="section-num">02</div>
-    <div>
-      <div class="section-title">Product Foundation</div>
-      <div class="section-en">Platform Foundation</div>
+<!-- ============== TOC ============== -->
+<section class="toc">
+  <div class="wrap">
+    <div class="toc__head">
+      <div class="ja">Document Overview</div>
+      <div class="en">TABLE OF CONTENTS</div>
     </div>
-  </div>
-
-  <p>JOPT Games is built on a globally proven technology stack and tournament management engine, delivering online pathways to live poker seat acquisition. The platform operates on a strict non-real-money basis — in-app chips are non-cashable. Rather than restricting the player pool to Japan alone, the platform is designed for expansion across Asia, allowing players from Japan, Korea, and beyond to compete for event seats and Day 1 entries on the same pipeline.</p>
-
-  <div class="two-col">
-    <div class="summary-box">
-      <div class="box-label">Asia-Ready · Asia-wide Player Pool</div>
-      <div class="box-title">Not a closed Japanese-only environment</div>
-      <div class="box-body">Tournaments match players across Japan, Korea, and Asia in the same event, competing for the same entry rights. All operations are non-real-money — app chips cannot be cashed out and no cash prizes are distributed directly.</div>
-    </div>
-    <div class="summary-box">
-      <div class="box-label">SSO · Direct Integration with WSOP Live</div>
-      <div class="box-title">One login, two platforms</div>
-      <div class="box-body">Shared account system means WSOP satellite seats won through JOPT Games are received and used directly within the WSOP Live app — no new account required. The entire player experience is completed with a single login.</div>
-    </div>
-  </div>
-
-  <div class="note-box">
-    <strong>Player Value Proposition:</strong> Enjoy globally-standard tournament quality while managing seat rights for events across Japan, Korea, and Asia — all from a single pipeline. The non-real-money model lowers the barrier to competitive participation, while top players are provided an exit route to WSOP, APT, KSOP, and other world and Asian championships.
+    <ul class="toc__list">
+      <li><a class="toc__item" href="#s01"><span class="toc__num">01</span><span class="toc__ja">About JOPT Games</span><span class="toc__en">EXECUTIVE SUMMARY</span></a></li>
+      <li><a class="toc__item" href="#s02"><span class="toc__num">02</span><span class="toc__ja">Product Foundation</span><span class="toc__en">PLATFORM FOUNDATION</span></a></li>
+      <li><a class="toc__item" href="#s03"><span class="toc__num">03</span><span class="toc__ja">Two Core Functions</span><span class="toc__en">FUNCTION ARCHITECTURE</span></a></li>
+      <li><a class="toc__item" href="#s04"><span class="toc__num">04</span><span class="toc__ja">Stage Structure</span><span class="toc__en">STAGE ARCHITECTURE</span></a></li>
+      <li><a class="toc__item" href="#s05"><span class="toc__num">05</span><span class="toc__ja">Subscription Plans</span><span class="toc__en">SUBSCRIPTION</span></a></li>
+      <li><a class="toc__item" href="#s06"><span class="toc__num">06</span><span class="toc__ja">Direct Buy-In</span><span class="toc__en">DIRECT BUY-IN</span></a></li>
+      <li><a class="toc__item" href="#s07"><span class="toc__num">07</span><span class="toc__ja">WSOP &amp; Global Partnerships</span><span class="toc__en">GLOBAL PARTNERSHIP</span></a></li>
+      <li><a class="toc__item" href="#s08"><span class="toc__num">08</span><span class="toc__ja">Future Vision — Online Poker League</span><span class="toc__en">FUTURE INITIATIVE</span></a></li>
+      <li><a class="toc__item" href="#s09"><span class="toc__num">09</span><span class="toc__ja">Contact</span><span class="toc__en">CONTACT</span></a></li>
+    </ul>
   </div>
 </section>
 
-<!-- ═══ 03 ═══ -->
-<section class="section" id="s03">
-  <div class="section-header">
-    <div class="section-num">03</div>
-    <div>
-      <div class="section-title">Two Core Functions</div>
-      <div class="section-en">Function Architecture</div>
+<!-- ============== 01 ============== -->
+<section class="sect" id="s01">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">01</span>About JOPT Games</div>
+      <div class="sect__en">EXECUTIVE SUMMARY</div>
     </div>
-  </div>
+    <p class="lead large">JOPT Games is a mobile-exclusive app designed for players to win seats to JOPT — Japan's premier live poker events — entirely online. Rather than a standalone in-app gaming experience, the product is purpose-built as a seamless pipeline: <strong>Online Qualifier → Live Tournament Entry</strong>.</p>
+    <p class="lead">Built on a globally proven technology stack and tournament operation engine, the platform operates on a strict non-real-money basis — chips cannot be exchanged for cash. Designed for Japan, Korea, and Asia, players across the region compete on the same pipeline for seats to JOPT, SPADIE, Sengoku Poker Tour, APT (Asian Poker Tour), and more. Through the WSOP (World Series of Poker) partnership, Japanese players gain a direct route to the World Series in Las Vegas.</p>
 
-  <p>JOPT Games is organized around two distinct functional pillars, each serving a different purpose.</p>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-label">① Satellite Function — Online → Live Pipeline Engine</div>
-      <div class="card-title">Win your way into live tournaments</div>
-      <div class="card-body">The core feature through which players progress through online qualifiers to win seats at live championship events. A four-stage structure — Trial → Satellite → Day 1 → Day 2 — lets players choose their entry point based on budget and skill level.<br><br>Unified qualifier pathways for JOPT, SPADIE, Sengoku Poker Tour, APT, and more — all managed from a single app.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">② Club Function — Player Community Operations</div>
-      <div class="card-title">Your home for competitive community play</div>
-      <div class="card-body">Players create clubs and run tournaments, ring games, and leaderboards within their community. This digitally recreates Japan's poker culture of competitive play among friends and peers.<br><br>Club-level records and ranking data are exportable, with planned integration for venue operations and local tournament tie-ins.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 04 ═══ -->
-<section class="section" id="s04">
-  <div class="section-header">
-    <div class="section-num">04</div>
-    <div>
-      <div class="section-title">Stage Structure</div>
-      <div class="section-en">Stage Architecture</div>
-    </div>
-  </div>
-
-  <p>The satellite function is composed of four distinct layers. In addition to advancing through each layer sequentially, direct entry options are available at every stage — players choose their starting point based on budget, schedule, and skill.</p>
-
-  <div class="stages">
-    <div class="stage">
-      <div class="stage-num">1</div>
+    <div class="metaRow">
       <div>
-        <div class="stage-name">Trial</div>
-        <div class="stage-tag online">Online</div>
+        <div class="k">PRODUCT TYPE</div>
+        <div class="v">Player Acquisition App</div>
+        <div class="d">Designed as an Online → Live tournament qualifier pipeline</div>
       </div>
-      <div class="stage-arrow">→</div>
-      <div class="stage-desc">Entry-level stage using trial tickets or complimentary campaign tickets. Includes freeroll seats.</div>
-    </div>
-    <div class="stage">
-      <div class="stage-num">2</div>
       <div>
-        <div class="stage-name">Satellite</div>
-        <div class="stage-tag online">Online</div>
+        <div class="k">PLATFORM</div>
+        <div class="v">Mobile Only</div>
+        <div class="d">App Store / Google Play exclusively</div>
       </div>
-      <div class="stage-arrow">→</div>
-      <div class="stage-desc">Win through to earn a Day 1 seat. Also open to players with direct-entry Satellite tickets.</div>
-    </div>
-    <div class="stage">
-      <div class="stage-num">3</div>
       <div>
-        <div class="stage-name">Day 1</div>
-        <div class="stage-tag online">Online</div>
+        <div class="k">EVENT ROUTES</div>
+        <div class="v">JOPT / SPADIE / Sengoku / APT</div>
+        <div class="d">Qualifier, Day 1, and seat pathways unified in one app</div>
       </div>
-      <div class="stage-arrow">→</div>
-      <div class="stage-desc">Online main event. Top finishers advance to offline Day 2. JOPT, SPADIE, Sengoku, and other brands run parallel Day 1s.</div>
     </div>
-    <div class="stage">
-      <div class="stage-num">4</div>
+
+    <div class="diff">
+      <div class="diff__title">4 Key Differentiators</div>
+      <ol class="diff__list">
+        <li>① <b>Safe &amp; Compliant Asia-wide Environment</b> — Globally proven tech stack, non-real-money operation (no wagering), open to players across Japan, Korea, and Asia.</li>
+        <li>② <b>Direct Connection to Major Live Tournaments</b> — Qualifiers and Day 1 events for JOPT, SPADIE, Sengoku Poker Tour, and more, all hosted within the app.</li>
+        <li>③ <b>International Tournament Linkage</b> — Scalable pathways extending to WSOP, APT, KSOP, and other Asian and international events.</li>
+        <li>④ <b>WSOP Live App Integration</b> — Shared account system for seamless receipt and use of World Series seats — no second account needed.</li>
+      </ol>
+    </div>
+
+    <div class="visualBlock">
+      <div class="visualHead">
+        <div class="title">In-App Player Flow</div>
+        <div class="note">APP FLOW</div>
+      </div>
+      <div class="routeOverview">
+        <div>
+          <div class="routeOverview__lead">Players find live events, enter online qualifiers, and manage their earned tickets — all in one app.</div>
+          <div class="routeSteps">
+            <div class="routeStep">
+              <div class="num">01</div>
+              <div><b>Find an Event</b><span>Browse JOPT, SPADIE, Sengoku, APT, and more from a unified event listing.</span></div>
+            </div>
+            <div class="routeStep">
+              <div class="num">02</div>
+              <div><b>Enter Online Qualifiers</b><span>Register for Trial, Satellite, or Day 1 stages using the appropriate ticket.</span></div>
+            </div>
+            <div class="routeStep">
+              <div class="num">03</div>
+              <div><b>Manage Your Seats</b><span>Track membership status and Trial / Satellite / Day 1 ticket balances from your account dashboard.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="routeOverview__screen">
+          <img src="assets/live-event-list.jpg" alt="Live Event List Screen" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 02 ============== -->
+<section class="sect" id="s02">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">02</span>Product Foundation</div>
+      <div class="sect__en">PLATFORM FOUNDATION</div>
+    </div>
+    <p class="lead large">JOPT Games is an online pipeline to live poker event seats, built on a globally proven technology stack and tournament operations engine. The platform runs on a non-real-money basis — chips are non-cashable. The player pool is not restricted to Japan; it is designed for expansion across Asia, with players from Japan, Korea, and beyond competing for the same event entries on one unified pipeline.</p>
+
+    <div class="cols c2">
+      <div class="card">
+        <div class="card__sub">ASIA-READY</div>
+        <div class="card__title">Asia-Ready Player Pool</div>
+        <p class="card__text">JOPT Games tournaments are not a closed, Japan-only environment. The platform is built to match players from Japan, Korea, and across Asia in the same events, competing for the same entry rights. All operations run on a non-real-money basis (no wagering) — in-app chips are non-cashable and no cash prizes are distributed directly.</p>
+      </div>
+      <div class="card">
+        <div class="card__sub">SSO</div>
+        <div class="card__title">Direct Connection to WSOP Live</div>
+        <p class="card__text">Shared account system means WSOP satellite seats won through JOPT Games are received and used directly within the WSOP Live app — no new account required. The entire player experience is completed with a single login.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <div class="notice__title">Player Value Proposition</div>
+      <p class="notice__text">Enjoy globally-standard tournament quality while managing seat rights for events across Japan, Korea, and Asia — all from a single pipeline. The non-real-money model lowers the barrier to competitive participation, while top players have a clear exit route to WSOP, APT, KSOP, and other world and Asian championships.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 03 ============== -->
+<section class="sect" id="s03">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">03</span>Two Core Functions</div>
+      <div class="sect__en">FUNCTION ARCHITECTURE</div>
+    </div>
+    <p class="lead large">JOPT Games is organized around two distinct functional pillars, each serving a different purpose.</p>
+
+    <div class="cols c2">
+      <div class="card">
+        <div class="card__num">①</div>
+        <div class="card__title">Satellite Function</div>
+        <div class="card__sub">ONLINE → LIVE Pipeline Engine</div>
+        <p class="card__text">The core feature through which players advance through online qualifiers to win seats at live championship events. A four-stage structure — Trial → Satellite → Day 1 → Day 2 — lets players choose their entry point based on budget and skill level.<br/><br/>Unified qualifier pathways for JOPT, SPADIE, Sengoku Poker Tour, APT, and more — all managed from a single app.</p>
+      </div>
+      <div class="card">
+        <div class="card__num">②</div>
+        <div class="card__title">Club Function</div>
+        <div class="card__sub">Player Community Operations</div>
+        <p class="card__text">Players create clubs and run tournaments, ring games, and leaderboards within their community. This digitally recreates Japan's poker culture of competitive play among friends and peers.<br/><br/>Club-level records and ranking data are exportable, with planned integration for venue operations and local tournament tie-ins.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== 04 ============== -->
+<section class="sect" id="s04">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">04</span>Stage Structure</div>
+      <div class="sect__en">STAGE ARCHITECTURE</div>
+    </div>
+    <p class="lead large">The satellite function is composed of four distinct layers. In addition to advancing sequentially, direct entry options are available at every stage — players choose their starting point based on budget, schedule, and skill.</p>
+
+    <div class="cols c4">
+      <div class="card stage-card stage-card--online">
+        <div class="stage__head"><div class="stage__no">1</div><div class="stage__arrow">→</div></div>
+        <div class="card__title">Trial</div>
+        <div class="stage__mode">ONLINE</div>
+        <p class="card__text">Entry-level stage using trial tickets or complimentary campaign tickets. Includes freeroll seats.</p>
+      </div>
+      <div class="card stage-card stage-card--online">
+        <div class="stage__head"><div class="stage__no">2</div><div class="stage__arrow">→</div></div>
+        <div class="card__title">Satellite</div>
+        <div class="stage__mode">ONLINE</div>
+        <p class="card__text">Win through to earn a Day 1 seat. Also open to players with direct-entry Satellite tickets.</p>
+      </div>
+      <div class="card stage-card stage-card--online">
+        <div class="stage__head"><div class="stage__no">3</div><div class="stage__arrow">→</div></div>
+        <div class="card__title">Day 1</div>
+        <div class="stage__mode">ONLINE</div>
+        <div class="card__sub">Online Main Event</div>
+        <p class="card__text">Online main event. Top finishers advance to offline Day 2. JOPT, SPADIE, Sengoku, and other brands run parallel Day 1s.</p>
+      </div>
+      <div class="card stage-card stage-card--offline">
+        <div class="stage__head"><div class="stage__no">4</div></div>
+        <div class="card__title">Day 2</div>
+        <div class="stage__mode">OFFLINE</div>
+        <div class="card__sub">Offline Main Event</div>
+        <p class="card__text">Offline main event at the JOPT live venue. The final stage where prizes are awarded directly to players.</p>
+      </div>
+    </div>
+
+    <div class="visualBlock">
+      <div class="visualHead">
+        <div class="title">Registration Screens</div>
+        <div class="note">TRIAL / SATELLITE / DAY 1</div>
+      </div>
+      <div class="shotGrid">
+        <div class="shotCard">
+          <img src="assets/registration-day1.png" alt="Day 1 Registration Screen" />
+          <div class="cap"><b>Day 1 Registration</b>Displays registration for WSOP / APT and other international events, clarifying the entry pathway.</div>
+        </div>
+        <div class="shotCard">
+          <img src="assets/satellite-list.jpg" alt="Satellite Tournament List" />
+          <div class="cap"><b>Satellite</b>Use a Satellite Ticket to advance toward winning a Day 1 Ticket.</div>
+        </div>
+        <div class="shotCard">
+          <img src="assets/day1-list.jpg" alt="Day 1 Tournament List" />
+          <div class="cap"><b>Day 1</b>Multiple brands — JOPT, SPADIE, Sengoku — run parallel Online Day 1 events.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <div class="notice__title">Flexible Entry Design</div>
+      <p class="notice__text">Players are not limited to advancing sequentially — direct entry routes are available at every layer. Based on budget, schedule, and skill level, each player can choose the optimal starting point for their competitive journey.</p>
+    </div>
+
+    <div class="notice">
+      <div class="notice__title">Responsible Gaming Policy</div>
+      <p class="notice__text">JOPT Games operates on a non-real-money basis (no wagering). In-app chips are non-cashable, and prizes awarded through satellites and qualifiers are limited to event seats and participation tickets — no cash bets are placed and no cash prizes are distributed through the app.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 05 ============== -->
+<section class="sect" id="s05">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">05</span>Subscription Plans</div>
+      <div class="sect__en">SUBSCRIPTION</div>
+    </div>
+    <p class="lead large">Three monthly plans, each delivering recurring satellite participation tickets on a regular basis.</p>
+
+    <table class="subTable">
+      <thead>
+        <tr><th>Plan</th><th>Monthly Fee (incl. tax)</th><th>Monthly Benefits</th><th>Positioning</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="plan">Free</td>
+          <td class="price">¥0</td>
+          <td>None (freerolls and open events available)</td>
+          <td class="pos">Trial / Entry-level</td>
+        </tr>
+        <tr>
+          <td class="plan">Silver</td>
+          <td class="price">¥980 / month</td>
+          <td>Trial Tickets × 2</td>
+          <td class="pos">Standard plan</td>
+        </tr>
+        <tr>
+          <td class="plan gold">Gold</td>
+          <td class="price">¥4,980 / month</td>
+          <td>Trial Tickets × 2 + Satellite Tickets × 2</td>
+          <td class="pos">Heavy users &amp; serious competitors</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="visualBlock tight">
+      <div class="visualHead">
+        <div class="title">Membership &amp; Ticket Balance</div>
+        <div class="note">MEMBERSHIP / TICKETS</div>
+      </div>
+      <div class="shotGrid c2">
+        <div class="shotCard">
+          <img src="assets/account-tickets.jpg" alt="Membership and Tournament Ticket Balance Screen" />
+          <div class="cap"><b>Subscription Value, Made Visible</b>Gold Membership status and all ticket balances displayed on a single screen.</div>
+        </div>
+        <div class="shotCard shotCard--wide">
+          <img src="assets/prize-day1-ticket.jpg" alt="Day 1 Ticket Prize Distribution Screen" />
+          <div class="cap"><b>Seats, Not Cash</b>Rewards take the form of Day 1 Tickets and event entry rights — never cash prizes.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cols c2">
+      <div class="card">
+        <div class="card__sub">GOLD</div>
+        <div class="card__title">Loyalty Bonus</div>
+        <p class="card__text">Gold plan members receive additional loyalty incentives on top of standard monthly tickets. Benefits are tiered by subscription duration — the longer you stay, the more value you receive.</p>
+      </div>
+      <div class="card">
+        <div class="card__sub">OPERATION</div>
+        <div class="card__title">Operation Rules</div>
+        <p class="card__text">Auto-renewing subscription. Tickets are distributed based on each member's renewal date. Secondary market trading (transfer or resale) of tickets is strictly prohibited to protect competitive integrity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 06 ============== -->
+<section class="sect" id="s06">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">06</span>Direct Buy-In</div>
+      <div class="sect__en">DIRECT BUY-IN</div>
+    </div>
+    <p class="lead large">Separate from subscriptions, players can purchase event participation tickets directly through an e-commerce storefront and enter targeted tournaments without a subscription.</p>
+
+    <div class="cols c2">
+      <div class="card">
+        <div class="card__sub">EC TICKET</div>
+        <div class="card__title">Direct Ticket Sales</div>
+        <p class="card__text">Players can purchase the tickets they need directly from the e-commerce site without a subscription. Separate purchase pathways are available for each event — JOPT, SPADIE, Sengoku Poker Tour, APT, and more — catering to players with a specific tournament in mind.</p>
+      </div>
+      <div class="card">
+        <div class="card__sub">ROLE DESIGN</div>
+        <div class="card__title">Subscription vs. Direct Buy-In</div>
+        <p class="card__text">Subscriptions serve players who want to compete consistently. Direct buy-ins serve players targeting a specific event. Offering both channels ensures the platform captures everyone — from casual players to championship-focused competitors.</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <div class="notice__title">Design Note</div>
+      <p class="notice__text">EC ticket sales are structured as a purchase pathway for event seats and participation rights — separate from the in-app non-real-money framework. After purchase, tickets sync with the player's in-app entry information, so they can proceed directly to their target event without confusion.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 07 ============== -->
+<section class="sect" id="s07">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">07</span>WSOP &amp; Global Partnerships</div>
+      <div class="sect__en">GLOBAL PARTNERSHIP</div>
+    </div>
+    <p class="lead large">Built around the WSOP (World Series of Poker) — the world's most prestigious poker brand — the platform also expands pathways to Asian and international tournaments including APT and KSOP.</p>
+
+    <div class="cols c3">
+      <div class="card">
+        <div class="card__title">WSOP Satellite Events</div>
+        <p class="card__text">Official WSOP satellite tournaments hosted directly within JOPT Games. Winners receive WSOP Live buy-in tickets directly — the route from Japan to the World Series in Las Vegas is now a single, connected pipeline.</p>
+      </div>
+      <div class="card">
+        <div class="card__title">APT &amp; KSOP Expansion</div>
+        <p class="card__text">By integrating seat pathways for APT and KSOP, JOPT Games evolves into a Japan-based hub connecting players to the highest-level Asian championships.</p>
+      </div>
+      <div class="card">
+        <div class="card__title">WSOP Live App Integration</div>
+        <p class="card__text">Shared account system means rights transfer to the WSOP Live app with no additional sign-up required. Just stay logged in — and the door to the World Series opens automatically.</p>
+      </div>
+    </div>
+
+    <div class="visualBlock internationalShowcase">
+      <div class="visualHead">
+        <div class="title">International Event UI</div>
+        <div class="note">WSOP / APT / GLOBAL GAME</div>
+      </div>
+      <div class="shotGrid">
+        <div class="shotCard">
+          <img src="assets/wsop-plus-chipcounts.jpeg" alt="WSOP Plus Chip Count Screen" />
+          <div class="cap"><b>WSOP Plus</b>Live chip counts and standings from the World Series — the tension of international poker.</div>
+        </div>
+        <div class="shotCard">
+          <img src="assets/apt-schedule-mockup.png" alt="APT Schedule Screen" />
+          <div class="cap"><b>APT Schedule</b>Asia's premier tournament circuit, presented as a native event experience within JOPT Games.</div>
+        </div>
+        <div class="shotCard">
+          <img src="assets/wsop-live-app.png" alt="WSOP Live Event Screen" />
+          <div class="cap"><b>WSOP Live Event</b>The achievement path — from satellite qualifier to a World Series ticket.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notice">
+      <div class="notice__title">Strategic Significance</div>
+      <p class="notice__text">By connecting domestic and international live events (JOPT, SPADIE, Sengoku Poker Tour, APT), a globally proven online infrastructure, and the world's premier championship (WSOP) in a single continuous pipeline, JOPT Games becomes more than an app — it functions as the definitive live poker entry hub for the Asian market.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 08 ============== -->
+<section class="sect" id="s08">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">08</span>Future Vision — Online Poker League</div>
+      <div class="sect__en">FUTURE INITIATIVE</div>
+    </div>
+    <p class="lead large">An evolution of the Club function into a standing, season-based Online Poker League. Modeled after Japan's M.League and Shogi Meijin Championship, the goal is a competitive ecosystem where cumulative seasonal points reveal true skill — with top performers advancing to JOPT live events.</p>
+
+    <div class="cols c3">
+      <div class="card">
+        <div class="card__sub">STRUCTURE</div>
+        <div class="card__title">Division System</div>
+        <p class="card__text">Div.S through Div.8 pyramid hierarchy. Promotion and relegation each half-season. Persistent competitive stakes throughout the year.</p>
+      </div>
+      <div class="card">
+        <div class="card__sub">FORMAT</div>
+        <div class="card__title">Combined Scoring</div>
+        <p class="card__text">Tournament (MTT) and ring game scores combined for a comprehensive measure of overall skill — no one-dimensional specialists.</p>
+      </div>
+      <div class="card">
+        <div class="card__sub">MEDIA</div>
+        <div class="card__title">YouTube Broadcast</div>
+        <p class="card__text">Top division featured tables streamed on YouTube. Designed to produce recognizable star players and grow poker as a spectator sport.</p>
+      </div>
+    </div>
+
+    <div class="road">
       <div>
-        <div class="stage-name">Day 2</div>
-        <div class="stage-tag offline">Offline</div>
+        <div class="lbl">PHASE 1</div>
+        <div class="y">2026 / Beta Phase</div>
+        <div class="t">Pilot run at approx. 300 players. Format validation and iteration.</div>
       </div>
-      <div class="stage-arrow"></div>
-      <div class="stage-desc">Offline main event at the JOPT live venue. The final stage where prizes are awarded directly to players.</div>
+      <div>
+        <div class="lbl">PHASE 2</div>
+        <div class="y">2027 / Full Launch</div>
+        <div class="t">Scale to approx. 1,000 players. Media presence ramps up in full.</div>
+      </div>
+      <div>
+        <div class="lbl">PHASE 3</div>
+        <div class="y">2028+</div>
+        <div class="t">Several thousand players. Team-based format under consideration.</div>
+      </div>
     </div>
-  </div>
 
-  <div class="note-box">
-    <strong>Responsible Gaming Policy:</strong> JOPT Games operates on a non-real-money basis (no wagering). In-app chips are non-cashable. Prizes awarded through satellites and qualifiers are limited to event seats and tickets — no cash bets are placed and no cash prizes are distributed through the app.
-  </div>
-</section>
-
-<!-- ═══ 05 ═══ -->
-<section class="section" id="s05">
-  <div class="section-header">
-    <div class="section-num">05</div>
-    <div>
-      <div class="section-title">Subscription Plans</div>
-      <div class="section-en">Subscription</div>
-    </div>
-  </div>
-
-  <p>Three monthly plans are available, each delivering recurring satellite participation tickets on a regular basis.</p>
-
-  <table class="plan-table">
-    <thead>
-      <tr>
-        <th>Plan</th>
-        <th>Monthly Fee (incl. tax)</th>
-        <th>Monthly Benefits</th>
-        <th>Positioning</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="plan-name">Free</td>
-        <td class="plan-price">¥0</td>
-        <td>None (freerolls and open events available)</td>
-        <td>Trial / Entry-level</td>
-      </tr>
-      <tr>
-        <td class="plan-name">Silver</td>
-        <td class="plan-price">¥980 / month</td>
-        <td>Trial Tickets × 2</td>
-        <td>Standard plan</td>
-      </tr>
-      <tr class="plan-gold-row">
-        <td class="plan-name">Gold <span class="badge">Premium</span></td>
-        <td class="plan-price">¥4,980 / month</td>
-        <td>Trial Tickets × 2 + Satellite Tickets × 2</td>
-        <td>Heavy users &amp; serious competitors</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-label">Membership &amp; Ticket Balance</div>
-      <div class="card-title">Subscription value made visible</div>
-      <div class="card-body">Gold Membership status and remaining ticket balances are displayed on a single screen — no guessing about what you have and where to use it.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Reward Design</div>
-      <div class="card-title">Seats, not cash</div>
-      <div class="card-body">All rewards take the form of event entry tickets such as Day 1 Tickets — never cash prizes. Consistent with the platform's non-real-money model.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Gold · Loyalty Bonus</div>
-      <div class="card-title">Long-term subscribers rewarded</div>
-      <div class="card-body">Gold plan members receive additional loyalty incentives on top of standard monthly tickets. Benefits scale with subscription duration — the longer you stay, the more value you receive.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Operation Rules</div>
-      <div class="card-title">Auto-renewal · No resale</div>
-      <div class="card-body">Subscriptions auto-renew monthly. Tickets are distributed based on each member's renewal date. Secondary market trading (transfer or resale) of tickets is strictly prohibited.</div>
+    <div class="notice">
+      <div class="notice__title">Product Positioning</div>
+      <p class="notice__text">This is the next media phase for JOPT Games — evolving from a live event acquisition app into a full-scale competitive media property. Combining competitive depth, continuous engagement, and spectator appeal, the goal is to establish poker as a sport worth watching in Japan.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ 06 ═══ -->
-<section class="section" id="s06">
-  <div class="section-header">
-    <div class="section-num">06</div>
-    <div>
-      <div class="section-title">Direct Buy-In</div>
-      <div class="section-en">Direct Buy-In</div>
+<!-- ============== 09 ============== -->
+<section class="sect" id="s09">
+  <div class="wrap">
+    <div class="sect__head">
+      <div class="sect__title"><span class="sect__num">09</span>Contact</div>
+      <div class="sect__en">CONTACT</div>
     </div>
-  </div>
 
-  <p>Separate from subscriptions, players can purchase event participation tickets directly through an e-commerce storefront and enter targeted tournaments without a subscription.</p>
+    <p class="lead">For inquiries regarding this document, media coverage, partnership opportunities, or investment discussions, please contact the JOPT Games business office.</p>
 
-  <div class="two-col">
-    <div class="summary-box">
-      <div class="box-label">EC Ticket — Direct Ticket Sales</div>
-      <div class="box-title">No subscription required</div>
-      <div class="box-body">Players purchase the tickets they need directly from the e-commerce site. Separate purchase pathways are available for each event — JOPT, SPADIE, Sengoku Poker Tour, APT, and more — catering to players with a specific tournament in mind.</div>
+    <div class="contact">
+      <div class="row"><div class="k">Service Name</div><div class="v">JOPT Games</div></div>
+      <div class="row"><div class="k">Operator</div><div class="v">JOPT Games Business Division</div></div>
+      <div class="row"><div class="k">Business</div><div class="v">Planning and operation of a mobile app providing live poker tournament acquisition pipelines</div></div>
+      <div class="row"><div class="k">Focus Areas</div><div class="v">Live event player acquisition, online qualifiers, international tournament seat pathways</div></div>
+      <div class="row"><div class="k">Press &amp; Partnership</div><div class="v">Contact details provided separately upon request</div></div>
     </div>
-    <div class="summary-box">
-      <div class="box-label">Role Design — Subscription vs. Direct</div>
-      <div class="box-title">Two entry points, one pipeline</div>
-      <div class="box-body">Subscriptions serve players who want to play consistently. Direct buy-ins serve players targeting a specific event. Offering both channels ensures the platform captures everyone — from casual players to championship-focused competitors.</div>
-    </div>
-  </div>
 
-  <div class="note-box">
-    <strong>Design Note:</strong> EC ticket sales are structured as a purchase pathway for event seats and participation rights — separate from the in-app non-real-money framework. After purchase, tickets sync with the player's in-app entry information, so they can proceed directly to their target event without confusion.
+    <p class="disclaim">This document has been prepared as an external-facing service overview for JOPT Games. Some details are subject to change without notice as the business environment evolves. All company names, service names, and trademarks referenced herein are the registered trademarks or trademarks of their respective owners. Reproduction, redistribution, or republication of any portion of this document without prior written consent is strictly prohibited.<br/>Issued: 2026 · JOPT Games</p>
   </div>
 </section>
 
-<!-- ═══ 07 ═══ -->
-<section class="section" id="s07">
-  <div class="section-header">
-    <div class="section-num">07</div>
-    <div>
-      <div class="section-title">WSOP &amp; Global Partnerships</div>
-      <div class="section-en">Global Partnership</div>
-    </div>
-  </div>
-
-  <p>Built around the WSOP (World Series of Poker) — the world's most prestigious poker brand — the platform also expands pathways to Asian and international tournaments including APT and KSOP.</p>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-label">WSOP Satellite Events</div>
-      <div class="card-title">Official WSOP satellites hosted in-app</div>
-      <div class="card-body">Winners receive WSOP Live buy-in tickets directly — no intermediate steps. The route from Japan to the World Series in Las Vegas is now a single, connected pipeline.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">APT &amp; KSOP Expansion</div>
-      <div class="card-title">Asia's premier tournaments, accessible</div>
-      <div class="card-body">By integrating seat pathways for APT and KSOP, JOPT Games evolves into a Japan-based hub connecting players to the highest-level Asian championships.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">WSOP Live App Integration</div>
-      <div class="card-title">Seamless account linkage</div>
-      <div class="card-body">Shared SSO means WSOP rights transfer to the WSOP Live app with no additional sign-up. Just stay logged in — and the door to the World Series opens automatically.</div>
-    </div>
-  </div>
-
-  <div class="note-box">
-    <strong>Strategic Significance:</strong> By connecting domestic and international live events (JOPT, SPADIE, Sengoku, APT), a globally proven online infrastructure, and the world's premier championship (WSOP) in a single continuous pipeline, JOPT Games becomes more than an app — it functions as the definitive live poker entry hub for the Asian market.
-  </div>
-</section>
-
-<!-- ═══ 08 ═══ -->
-<section class="section" id="s08">
-  <div class="section-header">
-    <div class="section-num">08</div>
-    <div>
-      <div class="section-title">Future Vision — Online Poker League</div>
-      <div class="section-en">Future Initiative</div>
-    </div>
-  </div>
-
-  <p>An evolution of the Club function into a standing, season-based Online Poker League. Modeled after Japan's M.League and Shogi Meijin Championship, the goal is a competitive ecosystem where cumulative seasonal points reveal true skill — with top performers advancing to JOPT live events.</p>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-label">Structure</div>
-      <div class="card-title">Division System</div>
-      <div class="card-body">Div.S through Div.8 pyramid hierarchy. Promotion and relegation each half-season. Persistent competitive stakes throughout the year.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Format</div>
-      <div class="card-title">Combined Scoring</div>
-      <div class="card-body">Tournament (MTT) and ring game scores combined for a comprehensive measure of overall skill — no one-trick specialists.</div>
-    </div>
-    <div class="card">
-      <div class="card-label">Media</div>
-      <div class="card-title">YouTube Broadcast</div>
-      <div class="card-body">Top division featured tables streamed on YouTube. Designed to produce recognizable star players and grow poker as a spectator sport.</div>
-    </div>
-  </div>
-
-  <div class="phase-grid">
-    <div class="phase">
-      <div class="phase-label">Phase 1</div>
-      <div class="phase-year">2026</div>
-      <div class="phase-name">Beta Phase</div>
-      <div class="phase-desc">Pilot run at approx. 300 players. Format validation and iteration.</div>
-    </div>
-    <div class="phase">
-      <div class="phase-label">Phase 2</div>
-      <div class="phase-year">2027</div>
-      <div class="phase-name">Full Launch</div>
-      <div class="phase-desc">Scale to approx. 1,000 players. Media presence ramps up in full.</div>
-    </div>
-    <div class="phase">
-      <div class="phase-label">Phase 3</div>
-      <div class="phase-year">2028+</div>
-      <div class="phase-name">Expansion</div>
-      <div class="phase-desc">Several thousand players. Team-based format under consideration.</div>
-    </div>
-  </div>
-
-  <div class="note-box">
-    <strong>Product Positioning:</strong> This is the next media phase for JOPT Games — evolving from a live event acquisition app into a full-scale competitive media property. Combining competitive depth, continuous engagement, and spectator appeal, the goal is to establish poker as a sport worth watching in Japan.
-  </div>
-</section>
-
-<!-- ═══ 09 ═══ -->
-<section class="section" id="s09">
-  <div class="section-header">
-    <div class="section-num">09</div>
-    <div>
-      <div class="section-title">Contact</div>
-      <div class="section-en">Contact</div>
-    </div>
-  </div>
-
-  <p>For inquiries regarding this document, media coverage, partnership opportunities, or investment discussions, please reach out to the JOPT Games business office.</p>
-
-  <div class="contact-grid">
-    <div class="contact-row">
-      <div class="contact-key">Service Name</div>
-      <div class="contact-val">JOPT Games</div>
-    </div>
-    <div class="contact-row">
-      <div class="contact-key">Operator</div>
-      <div class="contact-val">JOPT Games Business Division</div>
-    </div>
-    <div class="contact-row">
-      <div class="contact-key">Business</div>
-      <div class="contact-val">Planning and operation of a mobile app providing live poker tournament acquisition pipelines</div>
-    </div>
-    <div class="contact-row">
-      <div class="contact-key">Focus Areas</div>
-      <div class="contact-val">Live event player acquisition, online qualifiers, international tournament seat pathways</div>
-    </div>
-    <div class="contact-row">
-      <div class="contact-key">Press &amp; Partnership</div>
-      <div class="contact-val">Contact details provided separately upon request</div>
-    </div>
-  </div>
-</section>
-
-</div><!-- /page-wrap -->
-
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-  <div class="footer-logo">JOPT GAMES · SERVICE OVERVIEW · 2026</div>
-  <p class="footer-text">This document has been prepared as an external-facing service overview for JOPT Games. Some details are subject to change without notice as the business environment evolves. All company names, service names, and trademarks referenced herein are the registered trademarks or trademarks of their respective owners. Reproduction, redistribution, or republication of any portion of this document without prior written consent is strictly prohibited.</p>
-  <div class="footer-copy">Issued: 2026 · Japan Open Poker Tour</div>
+<footer>
+  <span class="gold">♠ ♥ ♦ ♣</span>
+  JOPT GAMES · SERVICE OVERVIEW · 2026
 </footer>
 
 </body>
